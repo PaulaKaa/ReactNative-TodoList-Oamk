@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, StyleSheet } from "react-native";
 
 interface TaskProps {
   id: string;
@@ -16,14 +16,24 @@ const Task: React.FC<TaskProps> = ({ id, name, done, getLineThrough }) => {
       }}
     >
       <Text
-        style={[{
-          textDecorationLine: done ? "line-through" : "none",
-        }, {marginLeft: 12,  marginBottom: 8}]}
+        style={[
+          styles.margins,
+          {
+            textDecorationLine: done ? "line-through" : "none",
+          },
+        ]}
       >
         {name}
       </Text>
     </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  margins: {
+    marginLeft: 12,
+    marginBottom: 8,
+  },
+});
 
 export default Task;

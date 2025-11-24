@@ -33,7 +33,7 @@ interface Task {
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
 
   //Add item function
   const addTask = () => {
@@ -95,11 +95,11 @@ export default function App() {
         data={tasks}
         keyExtractor={(task) => task.id}
         renderItem={({ item }) => (
-          <Task 
-          id={item.id}
-          name={item.name}
-          done={item.done}
-          getLineThrough={getLineThrough}
+          <Task
+            id={item.id}
+            name={item.name}
+            done={item.done}
+            getLineThrough={getLineThrough}
           ></Task>
         )}
       ></SwipeListView>
@@ -131,5 +131,4 @@ const styles = StyleSheet.create({
   button: {
     marginRight: 8,
   },
-
 });
