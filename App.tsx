@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Button } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -23,7 +23,7 @@ Use previous exercises and here are also some resources which might be useful.
 
 //npm install @react-native-async-storage/async-storage
 
-const STORAGE_KEY = "SHOPPING_LIST_ITEMS";
+const STORAGE_KEY = "TODOLIST_TASKS";
 
 interface Task {
   id: string;
@@ -35,7 +35,7 @@ export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [input, setInput] = useState<string>("");
 
-  //Add item function
+  //Add task function
   const addTask = () => {
     if (input.trim()) {
       setTasks((prev) => [
@@ -63,6 +63,7 @@ export default function App() {
         if (json) setTasks(JSON.parse(json));
       } catch (e) {
         // handle error
+        throw e;
       }
     })();
   }, []);
